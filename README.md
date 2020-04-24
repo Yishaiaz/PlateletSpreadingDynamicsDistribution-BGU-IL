@@ -13,7 +13,7 @@ Yishaia Zabary - yshaayaz@post.bgu.ac.il
 ## Input/Output
 ### Input & assumptions
 - Input: time lapse of single platelet spreading IRM imagery (other microscopy methods yet to be tested) in '.avi' video format.
-- THE SCRIPT EXPECTS FIRST TEN FRAMES MUST INCLUDE BACKGROUND IMAGERY ONLY ]
+- THE SCRIPT EXPECTS FIRST TEN FRAMES TO INCLUDE BACKGROUND IMAGERY ONLY ]
 - for stack conversion from '.tiff' to '.avi' simply use Fiji (https://fiji.sc)
 ### Input & assumptions
 - Output: platelet dynamics (attachment/detachment) plot & raw signal in '.npy' files, encoded dynamics video
