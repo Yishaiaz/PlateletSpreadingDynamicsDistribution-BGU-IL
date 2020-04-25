@@ -36,7 +36,7 @@ Yishaia Zabary - yshaayaz@post.bgu.ac.il
 
 ## Example data
 - Included in the repository under 'ExampleData/RawVideo' folder.   
-- The default parameters in `mainUI.m` were set for the collagen IV single platelet video
+- The default parameters in `mainUI.py` were set for the collagen IV single platelet video
 
 ## Output folders
 - For each input, a new (adding, not overwriting) 'Results' directory will be opened under the same directory as the raw imagery is.
