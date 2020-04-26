@@ -8,7 +8,7 @@ This code can be generalized to detect and quantify dynamics (attachment/detachm
 
 ## Installation:
 - clone repository to your local system.
-- install python3 (this was developed on python 3.7) @ `https://www.python.org/downloads/`
+- install python3 (developed on python 3.7) @ `https://www.python.org/downloads/`
 - install project requirements using `pip install -r requirements.txt`
 
 ## Input
