@@ -33,7 +33,6 @@ if __name__ == '__main__':
             manual_thresholds = int(manual_thresholds[0]), int(manual_thresholds[1])
         else:
             manual_thresholds = None
-
         if arg_dict.get('-filepath') and arg_dict['-filepath'] is not None:
             file_path = arg_dict['-filepath']
             if file_path == "":

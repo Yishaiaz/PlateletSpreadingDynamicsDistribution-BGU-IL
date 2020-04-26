@@ -23,7 +23,7 @@ class Procedures:
         except FileExistsError as e:
             error = True
         try:
-            os.mkdir("{0}{1}Results{1}EncodedVideos".format(file_path_folder, os.sep))
+            os.mkdir("{0}{1}Results{1}VisualizedDynamicsVideos".format(file_path_folder, os.sep))
         except FileExistsError as e:
             error = True
         if error:
@@ -35,11 +35,11 @@ class Procedures:
         # Encode the video with dynamics events
         de = DynamicsEncoder(attachment_thresold=attach_threshold, detachment_thresold=detach_threshold)
         de.manipulate_video(video_path=file_path,
-                            manipulated_video_path="{0}{1}Results{1}EncodedVideos".format(file_path_folder, os.sep),
+                            manipulated_video_path="{0}{1}Results{1}VisualizedDynamicsVideos".format(file_path_folder, os.sep),
                             condition=de.manipulate_frame)
 
     def example_data_procedure(self, **kwargs):
-        self.new_data_procedure("ExampleData/RawVideo/sample_collagen4.avi", **kwargs)
+        self.new_data_procedure("ExampleData/SampleData/sample_collagen4.avi", **kwargs)
 
     def print_help(self):
         with open('help.txt', 'r') as help_file:

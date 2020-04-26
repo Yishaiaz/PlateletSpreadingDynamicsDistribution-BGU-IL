@@ -22,7 +22,6 @@ class DynamicsQuantification:
             :return:
             """
             vid_cap = cv.VideoCapture(file_path)
-
             frame_width = int(vid_cap.get(cv.CAP_PROP_FRAME_WIDTH))
             frame_height = int(vid_cap.get(cv.CAP_PROP_FRAME_HEIGHT))
             detachment_events = list()
@@ -50,7 +49,12 @@ class DynamicsQuantification:
             return attach_threshold, detach_threshold
 
         print(kwargs)
-        
+
+        if kwargs.get('-time_scale') is not None:
+            self.seconds_per_frame = kwargs.get('-time_scale')
+        else:
+            self.seconds_per_frame = 5.0
+
         self.file_path = file_path
 
         if kwargs.get('-threshold_for_events') is not None:
@@ -132,10 +136,19 @@ class DynamicsQuantification:
         # saving numpy arrays
         np.save("{0}{1}DynamicsNumpyArrays{1}{2}_attachment_signal_numpyArray".format(path_for_results, os.sep, file_name), attachment_dynamics)
         np.save("{0}{1}DynamicsNumpyArrays{1}{2}_detachment_signal_numpyArray".format(path_for_results, os.sep, file_name), detachment_dynamics)
-        t = np.array(np.linspace(0, len(attachment_dynamics), len(attachment_dynamics)), dtype=int)
+        t = ["{}".format(int(frame_num*self.seconds_per_frame)) for frame_num in range(0, len(attachment_dynamics))]
         fig, ax = plt.subplots()
         ax.plot(t, attachment_dynamics)
         ax.plot(t, detachment_dynamics)
+        ax.set_xlabel("time (sec)", fontsize=4)
+        ax.set_ylabel("Attachment/detachment fraction", fontsize=4)
+
+        for k, label in enumerate(ax.xaxis.get_ticklabels()[::]):
+            if k % 10 == 0:
+                label.set_visible(True)
+            else:
+                label.set_visible(False)
+
         plt.setp(ax, ylim=(0, 1))
         plt.tight_layout()
         fig.savefig("{0}{1}DynamicsPlots{1}{2}_dynamicsSignalPlot.png".format(path_for_results, os.sep, file_name), dpi=300, bbox_inches="tight")

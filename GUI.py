@@ -46,7 +46,7 @@ class EntryPage(tk.Frame):
         self.controller = controller
         self.filename = ""
         self.param_kwargs = {
-            "-threshold_for_events": None, # tuple e.g. (10, -10)
+            "-time_scale": None, # int e.g. 5
             "-filter": None # str/bool e.g. 'True'/'False' or True/False
         }
         label = ttk.Label(self,
@@ -63,14 +63,13 @@ class EntryPage(tk.Frame):
         self.check_button_value_filter_param = IntVar(value=1)
         check_button = Checkbutton(self, text="Use smoothing filter", variable=self.check_button_value_filter_param)
         check_button.grid(row=2, column=0)
-        # threshold - attach
-        self.attach_threshold = StringVar(value="AttachThreshold")
-        attach_threshold_entry = ttk.Entry(self, width=10, textvariable=self.attach_threshold)
-        attach_threshold_entry.grid(row=2, column=1)
-        # threshold - detach
-        self.detach_threshold = StringVar(value="DetachThreshold")
-        detach_threshold_entry = ttk.Entry(self, width=10, textvariable=self.detach_threshold)
-        detach_threshold_entry.grid(row=2, column=2)
+        # Frames per second input
+        label = ttk.Label(self, text="Frames/second")
+        label.grid(row=2, column=1)
+        self.time_scale = StringVar(value="5")
+        attach_threshold_entry = ttk.Entry(self, width=10, textvariable=self.time_scale)
+        attach_threshold_entry.grid(row=2, column=2)
+
         # buttons
         button_upload_a_file = ttk.Button(self, text="Upload a file",
                                           command=self.file_dialog)
@@ -96,17 +95,13 @@ class EntryPage(tk.Frame):
     def file_dialog(self):
         self.filename = filedialog.askopenfilename(initialdir="/", title="Select single platelet video",
                                                     filetypes=(("avi format", "*.avi"), ("all files", "*.*")))
-        print(self.filename)
 
     def start_quantifying(self):
         # getting the parameters:
         try:
-            if self.attach_threshold.get() != "AttachThreshold" and self.detach_threshold.get() != "DetachThreshold":
-                self.attach_threshold = int(self.attach_threshold.get())
-                self.detach_threshold = int(self.detach_threshold.get())
-                self.param_kwargs['-threshold_for_events'] = (self.attach_threshold, self.detach_threshold)
-
+            self.param_kwargs['-time_scale'] = int(self.time_scale.get())
         except Exception as e:
+            self.param_kwargs['-time_scale'] = 5
             print(e)
         self.param_kwargs['-filter'] = bool(self.check_button_value_filter_param.get())
         messagebox.showinfo("Starting...", "now analyzing, please go to: \n['{0}/Results/']\n folder to see them".format(self.filename))

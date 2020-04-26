@@ -79,7 +79,6 @@ class DynamicsEncoder:
         out = cv2.VideoWriter(
             "{0}{1}{2}".format(manipulated_video_path, os.sep, file_name),
             cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 10, (frame_width, frame_height))
-        # vid_writer = cv2.VideoWriter("videos/suspicious_dynamics_videoes/{0}".format(video_name), cv2.VideoWriter_fourcc('I', 'Y', 'U', 'V'), fps, (frame_width, frame_height))
 
         buf = np.zeros((frames_in_memory, frame_height, frame_width, 3), np.dtype('int64'))
         ret = True
