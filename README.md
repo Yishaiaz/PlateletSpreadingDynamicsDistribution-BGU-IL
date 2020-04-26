@@ -19,7 +19,7 @@ Yishaia Zabary - yshaayaz@post.bgu.ac.il
 - Output: platelet dynamics (attachment/detachment) plot & raw signal in '.npy' files, encoded dynamics video
 
 ## GUI 
-- simply run the command 'MainUI -GUI' (case sensitive)
+- simply run the command 'MainUI.py -GUI' (case sensitive)
 
 ## Command Line Interfaces
 - to run the script on the example data, simply use ' python MainUI.py '
