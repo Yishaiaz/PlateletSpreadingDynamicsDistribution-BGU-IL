@@ -25,6 +25,9 @@ Yishaia Zabary - yshaayaz@post.bgu.ac.il
 - to run the script on the example data, simply use ' python MainUI.py '
 ### Command Line Arguments
 - [-GUI] GUI(case sensitive): opens the gui of this software, no more parameters are needed.
+                        example ' python MainUI -GUI ' for UNIX file systems.
+- [-h] help: print this text to the terminal
+                        example ' python MainUI -h ' for UNIX file systems.
 - [-filepath] custom file: initiates the script for the file supplied as the next argument, must be a valid systems path.
                         example ' python MainUI -filepath "ExampleData/RawVideo/sample_collagen4.avi" ' for UNIX file systems.
 - [-threshold] custom threshold: [ NOT RECOMMENDED ] allows you to configure the thresholds for detachment/attachment event intensity (@see repository Readme)
@@ -34,7 +37,6 @@ Yishaia Zabary - yshaayaz@post.bgu.ac.il
 - [-filter] signal smoothing filter: [ NOT RECOMMENDED ]boolean variable(1=True, 0=False) whether to pass the obtained dynamics signal through a Savitzky-Goaly filter (see repo Readme for more details)
                         example ' python MainUi -filepath "ExampleData/RawVideo/sample_collagen4.avi"  -filter 1  '
                         for UNIX file systems 
-- [-h] help: print help doc to command line
  
 ### parameters
 - threshold for events[default - auto calculated]: a tuple of negative integer (representing attachment intensity)
