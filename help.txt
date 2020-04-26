@@ -1,5 +1,6 @@
 arguments:
 
+[-GUI] GUI(case sensitive): opens the gui of this software, no more parameters are needed.
 [-h] help: print this text to the terminal
 [-filepath] custom file: initiates the script for the file supplied as the next argument, must be a valid systems path.
                         example ' python MainUI -filepath "ExampleData/RawVideo/sample_collagen4.avi" ' for UNIX file systems.

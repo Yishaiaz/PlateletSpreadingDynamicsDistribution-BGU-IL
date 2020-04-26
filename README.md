@@ -18,9 +18,13 @@ Yishaia Zabary - yshaayaz@post.bgu.ac.il
 ### Input & assumptions
 - Output: platelet dynamics (attachment/detachment) plot & raw signal in '.npy' files, encoded dynamics video
 
+## GUI 
+- simply run the command 'MainUI -GUI' (case sensitive)
+
 ## Command Line Interfaces
 - to run the script on the example data, simply use ' python MainUI.py '
 ### Command Line Arguments
+- [-GUI] GUI(case sensitive): opens the gui of this software, no more parameters are needed.
 - [-filepath] custom file: initiates the script for the file supplied as the next argument, must be a valid systems path.
                         example ' python MainUI -filepath "ExampleData/RawVideo/sample_collagen4.avi" ' for UNIX file systems.
 - [-threshold] custom threshold: [ NOT RECOMMENDED ] allows you to configure the thresholds for detachment/attachment event intensity (@see repository Readme)
@@ -32,7 +36,10 @@ Yishaia Zabary - yshaayaz@post.bgu.ac.il
                         for UNIX file systems 
 - [-h] help: print help doc to command line
  
-
+### parameters
+- threshold for events[default - auto calculated]: a tuple of negative integer (representing attachment intensity)
+                and a positive integer (for detachment intensity)
+- filter [default - True] : usage of a smoothing filter on the output dynamics signal retrieved
 
 ## Example data
 - Included in the repository under 'ExampleData/RawVideo' folder.   

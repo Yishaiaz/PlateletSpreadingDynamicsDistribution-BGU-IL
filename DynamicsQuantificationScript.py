@@ -49,16 +49,19 @@ class DynamicsQuantification:
 
             return attach_threshold, detach_threshold
 
+        print(kwargs)
+        
         self.file_path = file_path
 
-        if kwargs.get('threshold_for_events') is not None:
-            self.attach_threshold, self.detach_threshold = kwargs.get('threshold_for_events')
+        if kwargs.get('-threshold_for_events') is not None:
+            self.attach_threshold, self.detach_threshold = kwargs.get('-threshold_for_events')
         else:
             # obtain automatic threshold
             self.attach_threshold, self.detach_threshold = get_background_threshold(file_path)
 
         if kwargs.get('-filter') is not None:
-            self.smoothing_enabled = (True, 11) if kwargs.get('-filter') == 'True' else (False, 1)
+            self.smoothing_enabled = (True, 11) if kwargs.get('-filter') == 'True' or \
+                                                   kwargs.get('-filter') is True else (False, 1)
         else:
             self.smoothing_enabled = (True, 11)
 
